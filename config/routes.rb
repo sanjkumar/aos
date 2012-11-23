@@ -1,12 +1,22 @@
 Aos::Application.routes.draw do
-  get "store/index"
+  resources :line_items
 
+  resources :carts
+
+  get "users/new"
+  get "store/index"
   get "welcome/home"
   get "welcome/thank_you"
   get "welcome/register"
 
 
   resources :products
+  resources :users
+  resources :sessions
+
+  match '/your_cart' => "carts#your_cart", :as => "your_cart"
+  match '/login' => "sessions#new", :as => "login"
+  match '/logout' => "sessions#destroy", :as => "logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -60,6 +70,7 @@ Aos::Application.routes.draw do
   root :to => "products#index"
   root :to => "welcome", :action => "home"
   root :to => "store#index", :as => "store"
+
 
   # See how all your routes lay out with "rake routes"
 

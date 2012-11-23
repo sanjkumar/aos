@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aos</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title>Asian Online Shopping</title>
+  <%= stylesheet_link_tag "scaffolds" %>
+  <%= stylesheet_link_tag "aos", :media => "all" %>
+  <%= javascript_include_tag "products" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id= "store">
+    <div id= "banner">
+      <%= image_tag("logo.jpg") %>
+      <%= @page_title || "ASIAN ONLINE SHOPPING" %>
+    </div>
 
+    </div id= "columns">
+    <div id= "side">
+      <a href="http://www....">Home</a><br />
+      <a href="http://www....">Products</a><br />
+      <a href="http://www....">Contact</a><br />
+      <a href="http://www....">Offer</a><br />
+    </div>
 
-<%= link_to "Product Catalogue", products_path %> |
-<%= link_to "Leave Site", :controller => "welcome", :action => "thank_you" %> |
-<%= link_to "Register", :controller => "welcome", :action => "register" %> |
-<%= link_to "Home", :controller => "welcome", :action => "home" %>
+    <div id= "main">
 
+      <%= yield %>
 
-<%= yield %>
+    </div>
+  </div>
+
+    <%= link_to "Product Catalogue", products_path %> |
+    <%= link_to "Leave Site", :controller => "welcome", :action => "thank_you" %> |
+    <%= link_to "Register", :controller => "welcome", :action => "register" %> |
+    <%= link_to "Home", :controller => "welcome", :action => "home" %>
+
+<div id='header'>
+  <% if logged_in? %>
+      <%= current_user.email %> |
+      <%= link_to 'Logout', logout_path %> |
+      <%= link_to "Create User", new_user_path %> |
+  <% else %>
+      <%= link_to "Login", login_path %> |
+  <% end %>
+</div>
+
 
 </body>
 </html>
