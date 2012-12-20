@@ -16,22 +16,41 @@
 
 /* Styles for main page */
 
+body{
+   background-color:#ffffff;
+    margin: 0px;
+}
+#wrapper {
+    background-color: #191970;
+    padding: 0px;
+    margin: auto;
+}
 #banner {
-    background: #9c9;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background: #99cc99;
+    width: 1200px;
+    height: 106px;
+    margin-left: 65px;
     border-bottom: 2px solid;
     font: small-caps 40px/40px "Times New Roman", Georgia, Serif;
-    color: #282;
+
     text-aling: center;
 }
-
-#banner img {
+.banner img {
     float: left;
+
 }
 
+#cart{
+      position: absolute;
+
+}
+#login{
+    position: absolute;
+}
+
+
 #columns {
-    background: #141;
+    background: #ff0000;
 }
 
 #main {
@@ -42,12 +61,14 @@
 }
 
 #side{
+    margin-top: 0px;
+    margin-left: 137px;
     float: left;
     padding-top: 1em;
     padding-left: 1em;
     padding-bottom: 1em;
     width: 16em;
-    background: #141;
+    background: white;
 }
 
 #side{

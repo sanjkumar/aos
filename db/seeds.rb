@@ -17,7 +17,7 @@ Product.create(:name => 'Akash Rice 5kg', :description => %{<p>Akash Basmati Ric
 
 Product.create(:name => 'Akash Rice 10Kg', :description => %{<p>Akash Basmati Rice big bag</p>}, :image_url => 'Akash_basmati_rice_10kg.jpg', :weight => '10Kg', :price => '15.99')
 
-Product.create(:name => 'Chana Dal(Lentils)', :description => %{<p>spilt Chana dal<p>}, :image_url => 'channa_daal_2kg.jpg', :weight => '2Kg', :price => '3.99')
+Product.create(:name => 'Chana Dal(Lentils)', :description => %{<p>spilt Chana dal</p>}, :image_url => 'channa_daal_2kg.jpg', :weight => '2Kg', :price => '3.99')
 
 Product.create(:name => 'Moong Dal(Lentils)', :description => %{<p>washed Moong dal</p>}, :image_url => 'moong_daal_4kg.jpg', :weight => '4Kg', :price => '5.99')
 

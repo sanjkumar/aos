@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
 
   # Make current_user available in templates as a helper
   helper_method :current_user
+  helper_method :is_admin?
+  def is_admin?
+    if current_user and (current_user.admin == true)
+      return true
+    else
+      access_denied
+    end
+  end
 
   # Filter method to enforce a login requirement
   # Apply as a before_filter on any controller you want to protect
