@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
 
   # Make current_user available in templates as a helper
   helper_method :current_user
+  helper_method :is_admin?
+  def is_admin?
+    if current_user and (current_user.admin == true)
+      return true
+    else
+      access_denied
+    end
+  end
 
   # Filter method to enforce a login requirement
   # Apply as a before_filter on any controller you want to protect
@@ -35,5 +43,13 @@ class ApplicationController < ActionController::Base
     cart = Cart.create
     session[:cart_id] = cart.id
     cart
+  end
+
+  protected
+
+  def authorize
+    unless User.find_by_id(session[:user_id])
+      respond_to login_url, :notice => "Please log in"
+    end
   end
 end

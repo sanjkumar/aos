@@ -1,22 +1,34 @@
 Aos::Application.routes.draw do
-  resources :line_items
 
-  resources :carts
+  get 'admin' => 'admin#index'
 
   get "users/new"
+  get "users/_form"
   get "store/index"
   get "welcome/home"
+  get "carts/show"
   get "welcome/thank_you"
   get "welcome/register"
 
 
-  resources :products
+  resources :orders
+  resources :line_items
+  resources :carts
+  resources :products do
+    get :who_bought, :on => :member
+  end
   resources :users
-  resources :sessions
+  resources :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
 
   match '/your_cart' => "carts#your_cart", :as => "your_cart"
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
+  match '/users/:id', :to => 'users#destroy', :as => :destroy_user, :via => :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -69,7 +81,7 @@ Aos::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => "products#index"
   root :to => "welcome", :action => "home"
-  root :to => "store#index", :as => "store"
+  root :to => "store#index", :action => "products"
 
 
   # See how all your routes lay out with "rake routes"

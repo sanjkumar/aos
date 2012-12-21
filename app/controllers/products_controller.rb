@@ -3,6 +3,16 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+  def who_bought
+    @product =Product.find(params[:id])
+    respond_to do |format|
+      format.xml { render :xml => @product}
+    end
+  end
+
+
+  # GET /products
+  # GET /products.json
   def index
     @products = Product.search(params[:search_query])
 

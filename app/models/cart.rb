@@ -1,10 +1,11 @@
 class Cart < ActiveRecord::Base
   # attr_accessible :title, :body
 
+  belongs_to  :user
   has_many :line_items, :dependent => :destroy
 
   def add_product(product)
-    current_item = line_items.where(:product_id => product.id).first
+    current_item = line_items.find_by_product_id(product.id)
     if current_item
       current_item.quantity += 1
     else
@@ -17,9 +18,8 @@ class Cart < ActiveRecord::Base
   def total_price
     total = 0
     line_items.each do |line_item|
-      total += line_item.product.price * line_item.quantity
+     total += line_item.product.price * line_item.quantity
     end
     total
   end
-
 end

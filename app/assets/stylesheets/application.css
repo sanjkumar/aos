@@ -16,22 +16,82 @@
 
 /* Styles for main page */
 
-#banner {
-    background: #9c9;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid;
+body{
+    margin: 0px;
+}
+#wrapper {
+
+    padding: 0px;
+    margin: auto;
+}
+#banner{
+    background-color: #6E8B3D;
+    width: 1200px;
+    height: 116px;
+    margin-left: 65px;
     font: small-caps 40px/40px "Times New Roman", Georgia, Serif;
-    color: #282;
     text-aling: center;
 }
-
-#banner img {
+.banner img {
     float: left;
+
+}
+#aos{
+    float: left;
+    position: absolute;
+    height: 95px;
+    left: 200px;
+    top: 0px;
+}
+#header{
+    background-color: #6E8B3D;
+    font-family: verdana, arial, helvetica;
+    font-size: 14px;
+    float: right;
+}
+#cart{
+    position: absolute;
+    font-size: 12px;
+    background-color: #c71585;
+    left: 1034px;
+    top: 171px;
+    width: 230px;
+    height: 500px;
+}
+#login{
+    position: absolute;
+}
+
+.aos_form fieldset{
+    background-color: #eeeeee;
+}
+.aos_form legend{
+    color: #dfd;
+    background: blue;
+    font-family: sans-serif;
+    padding: 0.2em 1em;
+}
+.aos_form label{
+    width: 5em;
+    float: left;
+    text-align: right;
+    padding-top: 0.2em;
+    margin-right: 0.1em;
+    display: block;
+}
+.aos_form select, .aos_form textarea, .aos_form input{
+    margin-left: 4em;
+}
+.aos_form .submit{
+    margin-left: 4em;
+}
+#aos_form{
+    margin: 0.5em;
+    width: 500px;
 }
 
 #columns {
-    background: #141;
+    background-color: #CCCCCC;
 }
 
 #main {
@@ -41,16 +101,85 @@
     background: white;
 }
 
-#side{
+#side ul ul {
+    display: none;
+}
+#side ul li:hover > ul {
+    display: block;
+}
+#side ul {
+    background: #6E8B3D;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    width: 1200px;
+    left: 65px;
+    margin: -5px 0px 0px 0px;
+    padding: 0px;
+    position: absolute;
+    list-style: none;
+    display: inline-table;
+}
+#side ul:after {
+    content: ""; clear: both; display: block;
+}
+#side ul li {
     float: left;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-bottom: 1em;
-    width: 16em;
-    background: #141;
+}
+#side ul li:hover {
+    background: #4b545f;
+}
+#side ul li:hover a {
+    color: #fff;
 }
 
-#side{
-    color: #bfb;
-    font-size: small;
+#side ul li a {
+    display: block;
+    padding: 20px 53px;
+    color: #000000;
+    text-decoration: none;
+}
+#side ul ul {
+    background: #5f6975;
+    border-radius: 0px;
+    padding: 0;
+    position: absolute;
+    width: 145px;
+    top: 268px;
+}
+#side ul ul li {
+    float: none;
+    border-top: 1px solid #6b727c;
+    border-bottom: 1px solid #6495ED;
+    position: absolute;
+}
+#side ul ul li a {
+    padding: 7px 15px;
+    color: #fff;
+}
+#side ul ul li a:hover {
+    background: #4b545f;
+}
+#product{
+    float: left;
+    background-color: #dcdcdc;
+    position: absolute;
+    left: 65px;
+    top: 171px;
+    width: 969px;
+}
+#info ul li {
+    display: inline;
+    list-style: none;
+    padding: 20px 20px;
+    color: #000000;
+    text-decoration: none;
+ }
+#info ul li{
+    padding: 50px;
+}
+#txt ul li{
+    display: inline;
+    list-style: none;
+    padding: 100 100 100 100px;
+    color: #000000;
+    text-decoration: none;
 }
