@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
   <b>Name:</b>
   <%= @product.name %>
@@ -25,6 +27,17 @@
   <%= @product.price %>
 </p>
 
+<% if @product.category %>
+    <p>
+      <b>Category:</b>
+      <%= @product.category.name %>
+    </p>
+<% end %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<% if current_user and current_user.admin %>
+    <%= link_to 'Edit', edit_product_path(@product) %>
+
+
+<% end %>
+<br/>
 <%= link_to 'Back', products_path %>

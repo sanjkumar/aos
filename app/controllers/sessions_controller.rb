@@ -1,15 +1,21 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authorize
+
+  def new
+  end
+
   def create
+
     if user = User.authenticate(params[:email], params[:password])
       session[:user_id] = user.id
-      redirect_to admin_url,
+      redirect_to admin_url
     else
-      flash.now[:alert] = "Invalid login/password combination"
-      render :action => 'new'
+      redirect_to login_url, alert: "Invalid user/password combination"
     end
   end
+
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, :notice => "You successfully logged out"
+    redirect_to root_path notice: "logged out"
   end
 end

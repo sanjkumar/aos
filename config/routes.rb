@@ -1,7 +1,10 @@
 Aos::Application.routes.draw do
 
+
   get 'admin' => 'admin#index'
 
+
+  get "categories/index"
   get "users/new"
   get "users/_form"
   get "store/index"
@@ -18,11 +21,18 @@ Aos::Application.routes.draw do
     get :who_bought, :on => :member
   end
   resources :users
+
   resources :sessions do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
+
+
+  resources :sessions
+  resources :categories
+  resources :line_items
+  resources :carts
 
 
   match '/your_cart' => "carts#your_cart", :as => "your_cart"
@@ -79,9 +89,11 @@ Aos::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  #root :to => "Category", action => "Category"
   root :to => "products#index"
   root :to => "welcome", :action => "home"
   root :to => "store#index", :action => "products"
+
 
 
   # See how all your routes lay out with "rake routes"

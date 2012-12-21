@@ -17,6 +17,7 @@
 /* Styles for main page */
 
 body{
+
     margin: 0px;
 }
 #wrapper {
@@ -88,10 +89,40 @@ body{
 #aos_form{
     margin: 0.5em;
     width: 500px;
+    background-color:#ffffff;
+}
+#wrapper {
+    background-color: #191970;
+    padding: 0px;
+    margin: auto;
+}
+#banner {
+    background: #99cc99;
+    width: 1200px;
+    height: 106px;
+    margin-left: 65px;
+    border-bottom: 2px solid;
+    font: small-caps 40px/40px "Times New Roman", Georgia, Serif;
+
+    text-aling: center;
+}
+.banner img {
+    float: left;
 }
 
+#cart{
+      position: absolute;
+
+}
+#login{
+    position: absolute;
+}
+
+
 #columns {
+
     background-color: #CCCCCC;
+
 }
 
 #main {
@@ -100,7 +131,6 @@ body{
     padding-left: 2em;
     background: white;
 }
-
 #side ul ul {
     display: none;
 }
@@ -129,6 +159,16 @@ body{
 }
 #side ul li:hover a {
     color: #fff;
+}
+#side{
+    margin-top: 0px;
+    margin-left: 137px;
+    float: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 16em;
+    background: white;
 }
 
 #side ul li a {

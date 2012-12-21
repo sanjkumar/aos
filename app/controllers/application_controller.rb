@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery
 
   protected
@@ -36,6 +37,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, :notice => "Please log in to continue" and return false
   end
 
+
+
   private
   def current_cart
     Cart.find(session[:cart_id])
@@ -45,11 +48,5 @@ class ApplicationController < ActionController::Base
     cart
   end
 
-  protected
 
-  def authorize
-    unless User.find_by_id(session[:user_id])
-      respond_to login_url, :notice => "Please log in"
-    end
-  end
 end

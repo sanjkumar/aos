@@ -1,21 +1,31 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  skip_before_filter :authorize
+
+  before_filter :authenticate, :except => [:index, :show,]
+  before_filter :prepare_categories
+
 
   # GET /products
   # GET /products.json
+
   def who_bought
-    @product =Product.find(params[:id])
+    @product = Product.find(params[:id])
     respond_to do |format|
-      format.xml { render :xml => @product}
+      format.xml { render :xml => @product }
     end
   end
-
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params[:search_query])
 
+    if params[:category]
+      @category = Category.find(params[:category])
+      @products = @category.products
+    else
+
+      @products = Product.search(params[:search_query])
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -37,6 +47,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +58,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.all
   end
 
   # POST /products
@@ -71,6 +83,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     respond_to do |format|
+
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
@@ -80,6 +93,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+
 
   # DELETE /products/1
   # DELETE /products/1.json
@@ -91,5 +105,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+
+
+  private
+  def prepare_categories
+    @categories = Category.all
   end
 end

@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @user }
     end
+
   end
 
   # GET /users/new
@@ -41,10 +42,10 @@ class UsersController < ApplicationController
         format.html # edit.html.erb
         format.json { render json: @user }
     end
-   end
+    end
+
     # POST /users
     # POST /users.json
-
     def create
       @user = User.new(params[:user])
 
@@ -72,6 +73,18 @@ class UsersController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+    end
+
+    def destroy
+      @user =User.find(parms[:id])
+      if current_user?(@user)
+        redirect_to users_path, :notice => 'You can not delete yourself !'
+      else
+        @user.destroy
+        flash[:success] = 'User destroyed'
+        redirect_to user_path
+      end
+
     end
   end
 
